@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 
 APPROVED_DATASET_PATH = Path("data/raw/customer_churn.csv")
-LOCAL_FALLBACK_PATH = "C:/Users/dev/Desktop/titanic_train.csv"
+LOCAL_FALLBACK_PATH = "data/raw/titanic_train.csv"
 
 
 def load_dataset(path: str) -> pd.DataFrame:
