@@ -1,14 +1,15 @@
 from __future__ import annotations
-#
+
 import sys
 from importlib.metadata import version
 
 from packaging.version import Version
 
+
 MIN_VERSIONS = {
-    "pandas": "1.5.3",
-    "numpy": "2.4.3",
-    "scikit-learn": "1.8.0",
+    "pandas": "2.0.0",
+    "numpy": "1.24.0",
+    "scikit-learn": "1.3.0",
 }
 
 
