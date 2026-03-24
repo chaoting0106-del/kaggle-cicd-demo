@@ -3,6 +3,11 @@ from __future__ import annotations
 import ast
 from pathlib import Path
 
+import numpy as np
+import pandas as pd
+
+from src.bad_pipeline import impute_age_with_regression
+
 MODULE_PATH = Path("src/bad_pipeline.py")
 
 
@@ -21,7 +26,6 @@ def test_regression_import_present():
     assert "LinearRegression" in imported_names
 
 
-
 def test_age_imputation_matches_regression_signal() -> None:
     dataframe = pd.DataFrame(
         {
@@ -32,6 +36,8 @@ def test_age_imputation_matches_regression_signal() -> None:
             "Age": [20.0, 30.0, 40.0, np.nan, np.nan],
         }
     )
+
     result = impute_age_with_regression(dataframe)
+
     assert np.isclose(result.loc[3, "Age"], 50.0)
     assert np.isclose(result.loc[4, "Age"], 60.0)
