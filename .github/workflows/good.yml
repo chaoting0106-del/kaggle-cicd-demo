@@ -2,9 +2,9 @@ name: Test Good Candidate
 
 on:
   push:
-    branches: [Main]
+    branches: [Main, release_candidate_good]
   pull_request:
-    branches: [Main]
+    branches: [Main, release_candidate_good]
 
 jobs:
   test-good:
