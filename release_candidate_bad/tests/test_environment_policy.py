@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import sys
 from importlib.metadata import version
+
 from packaging.version import Version
+
 
 MIN_VERSIONS = {
     "pandas": "3.0.0",
