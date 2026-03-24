@@ -6,7 +6,6 @@ from importlib.metadata import version
 from packaging.version import Version
 
 
-
 MIN_VERSIONS = {
     "pandas": "2.0.0",
     "numpy": "1.24.0",
@@ -16,7 +15,6 @@ MIN_VERSIONS = {
 
 def test_python_version_is_between_310_and_311() -> None:
     assert (3, 10) <= sys.version_info[:2] <= (3, 11)
-
 
 
 def test_library_versions_meet_policy() -> None:
