@@ -14,15 +14,16 @@ MODULE_PATH = Path("src/good_pipeline.py")
 def test_age_imputation_uses_regression_class() -> None:
     source = MODULE_PATH.read_text()
     tree = ast.parse(source)
-    imported_names = {
-    name.name
-    for node in ast.walk(tree)
-    if isinstance(node, ast.ImportFrom)
-    and node.module == "sklearn.linear_model"
-    for name in node.names
-}
-    assert "LinearRegression" in imported_names
 
+    imported_names = {
+        name.name
+        for node in ast.walk(tree)
+        if isinstance(node, ast.ImportFrom)
+        and node.module == "sklearn.linear_model"
+        for name in node.names
+    }
+
+    assert "LinearRegression" in imported_names
 
 
 def test_age_imputation_matches_regression_signal() -> None:
@@ -35,6 +36,8 @@ def test_age_imputation_matches_regression_signal() -> None:
             "Age": [20.0, 30.0, 40.0, np.nan, np.nan],
         }
     )
+
     result = impute_age_with_regression(dataframe)
+
     assert np.isclose(result.loc[3, "Age"], 50.0)
     assert np.isclose(result.loc[4, "Age"], 60.0)
