@@ -7,6 +7,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
 
+
 APPROVED_DATASET_PATH = Path("data/raw/customer_churn.csv")
 LOCAL_FALLBACK_PATH = "data/raw/titanic_train.csv"
 
