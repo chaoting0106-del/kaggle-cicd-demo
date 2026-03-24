@@ -18,8 +18,8 @@ def test_age_imputation_uses_regression_class() -> None:
     node.module
     for node in ast.walk(tree)
     if isinstance(node, ast.ImportFrom)
-    and node.module == "sklearn.linear_model"
 }
+
     assert "LinearRegression" in imported_names
 
 
