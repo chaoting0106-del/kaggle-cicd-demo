@@ -14,12 +14,13 @@ MODULE_PATH = Path("src/good_pipeline.py")
 def test_age_imputation_uses_regression_class() -> None:
     source = MODULE_PATH.read_text()
     tree = ast.parse(source)
-    imports = {
-    node.module
+    imported_names = {
+    name.name
     for node in ast.walk(tree)
     if isinstance(node, ast.ImportFrom)
+    and node.module == "sklearn.linear_model"
+    for name in node.names
 }
-
     assert "LinearRegression" in imported_names
 
 
