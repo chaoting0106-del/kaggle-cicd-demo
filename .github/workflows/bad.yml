@@ -36,4 +36,6 @@ jobs:
       - name: Tests
         run: |
           cd release_candidate_bad
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/src
           pytest
+
