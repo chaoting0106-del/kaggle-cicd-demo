@@ -18,6 +18,11 @@ def test_approved_dataset_path_is_used() -> None:
 
 def test_no_hard_coded_local_paths() -> None:
     tree = ast.parse(MODULE_PATH.read_text())
-    string_literals = [node.value for node in ast.walk(tree) if isinstance(node, ast.Constant) and isinstance(node.value, str)]
+    string_literals = [
+    node.value
+    for node in ast.walk(tree)
+    if isinstance(node, ast.Constant)
+    and isinstance(node.value, str)
+]
     offending = [value for value in string_literals if ABSOLUTE_PATH_PATTERN.search(value)]
     assert offending == []
