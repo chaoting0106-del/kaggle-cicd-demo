@@ -3,23 +3,21 @@ from __future__ import annotations
 import ast
 from pathlib import Path
 
-import numpy as np
-import pandas as pd
-
-from src.bad_pipeline import impute_age_with_regression
-
 MODULE_PATH = Path("src/bad_pipeline.py")
 
 
-def test_age_imputation_uses_regression_class() -> None:
+def test_regression_import_present():
     source = MODULE_PATH.read_text()
     tree = ast.parse(source)
-    imports = {
-    node.module
-    for node in ast.walk(tree)
-    if isinstance(node, ast.ImportFrom)
-    and node.module == "sklearn.linear_model"
-}
+
+    imported_names = {
+        name.name
+        for node in ast.walk(tree)
+        if isinstance(node, ast.ImportFrom)
+        and node.module == "sklearn.linear_model"
+        for name in node.names
+    }
+
     assert "LinearRegression" in imported_names
 
 
