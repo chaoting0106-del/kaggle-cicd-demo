@@ -6,6 +6,7 @@ from importlib.metadata import version
 from packaging.version import Version
 
 
+
 MIN_VERSIONS = {
     "pandas": "2.0.0",
     "numpy": "1.24.0",
