@@ -1,4 +1,5 @@
 import os
+from typing import Any  # Import Any for complex sklearn types
 
 import numpy as np
 import pandas as pd
@@ -29,7 +30,8 @@ def impute_age_with_regression(dataframe: pd.DataFrame) -> pd.DataFrame:
     
     return df
 
-def train_model(dataframe: pd.DataFrame):
+# Line 32: Added return type annotation
+def train_model(dataframe: pd.DataFrame) -> tuple[LogisticRegression, pd.DataFrame, pd.Series]:
     features_list = ["Pclass", "SibSp", "Parch", "Fare", "Age"]
     dataframe["Fare"] = dataframe["Fare"].fillna(dataframe["Fare"].median())
     
@@ -48,7 +50,8 @@ def train_model(dataframe: pd.DataFrame):
 
     return model, x_test, y_test
 
-def main():
+# Line 51: Added -> None
+def main() -> None:
     np.random.seed(42)
     dataset_path = os.getenv("DATASET_PATH", LOCAL_FALLBACK_PATH)
 
