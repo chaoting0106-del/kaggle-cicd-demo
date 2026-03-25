@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.metrics import accuracy_score
-from sklearn.model_selection import train_test_split train_test_split
+from sklearn.model_selection import train_test_split
 
 # Standardised pathing
 LOCAL_FALLBACK_PATH = "C:/Users/dev/Desktop/titanic_train.csv"
