@@ -5,7 +5,6 @@ from importlib.metadata import version
 
 from packaging.version import Version
 
-
 MIN_VERSIONS = {
     "pandas": "2.0.0",
     "numpy": "1.24.0",
@@ -14,9 +13,11 @@ MIN_VERSIONS = {
 
 
 def test_python_version_is_between_310_and_311() -> None:
+    """Ensure the environment is running a supported Python version."""
     assert (3, 10) <= sys.version_info[:2] <= (3, 11)
 
 
 def test_library_versions_meet_policy() -> None:
+    """Ensure installed library versions meet the minimum requirements."""
     for package_name, min_version in MIN_VERSIONS.items():
         assert Version(version(package_name)) >= Version(min_version)
