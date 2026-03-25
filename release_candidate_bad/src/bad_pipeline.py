@@ -1,11 +1,11 @@
 import os
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
-from pathlib import Path
 
 # Standardised pathing
 APPROVED_DATASET_PATH = Path("data/raw/customer_churn.csv")
