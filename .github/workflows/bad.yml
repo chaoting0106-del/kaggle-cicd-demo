@@ -22,6 +22,8 @@ jobs:
           cd release_candidate_bad
           pip install -r requirements.txt
           pip install -r requirements-dev.txt
+          pip install --upgrade numpy pandas scikit-learn
+
 
       - name: Lint
         run: |
@@ -37,5 +39,5 @@ jobs:
         run: |
           cd release_candidate_bad
           export PYTHONPATH=$PYTHONPATH:$(pwd)/src
-          pytest
+          pytest -q
 
