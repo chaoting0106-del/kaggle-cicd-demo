@@ -1,6 +1,4 @@
 import os
-from typing import Any  # Import Any for complex sklearn types
-
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression, LogisticRegression
